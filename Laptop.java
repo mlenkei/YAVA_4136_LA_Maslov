@@ -1,7 +1,5 @@
 public class Laptop {
     
-    //public static int counter = 0;
-    //private int id;
     private String name;
     private int ram;
     private int storageCap;
@@ -10,7 +8,6 @@ public class Laptop {
     private double diagonal;
     
     public Laptop(String name, int ram, int storageCap, String os, String chroma, double diagonal){
-        //this.id = counter++;
         this.name = name;
         this.ram = ram;
         this.storageCap = storageCap;
@@ -33,6 +30,9 @@ public class Laptop {
             
         }
     
+    public String getName(){
+        return this.name;
+    }  
     public int getRam(){
         return this.ram;
     }
@@ -41,6 +41,9 @@ public class Laptop {
     }
     public String getOS(){
         return this.os;
+    }
+    public String getChrome(){
+        return this.chroma;
     }
     public double getDiagonal(){
         return this.diagonal;

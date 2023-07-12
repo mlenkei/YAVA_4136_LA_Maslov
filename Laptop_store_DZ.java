@@ -20,8 +20,8 @@ public class Laptop_store_DZ {
         Laptop laptop9 = new Laptop("Apple MacBook Air 13", 4, 256, "MacOs", "золотистый", 13.3);
         Laptop laptop10 = laptop2;
         Laptop laptop11 = laptop2;
-        
-        
+
+        // Добавляем элементы в HashSet
         Set<Laptop> unicLaptop = new HashSet<Laptop>();
         unicLaptop.add(laptop1);
         unicLaptop.add(laptop2);
@@ -35,28 +35,37 @@ public class Laptop_store_DZ {
         unicLaptop.add(laptop10);
         unicLaptop.add(laptop11);
 
+        // Выводим элементы HashSet в консоль
         System.out.printf("Всего уникалных ноутбуков: %d \n", unicLaptop.size());
      
-        Map<Integer, String> mapCrit = new HashMap<>();
-        mapCrit.put(1, "объем оперативной памяти");
-        mapCrit.put(2, "объем накопителя");
-        mapCrit.put(3, "ОС");
-        mapCrit.put(4, "цвет");
-        mapCrit.put(5, "диагональ");
+        // Создаем объект HashMap
+        Map<Integer, String> mapBasket = new HashMap<>();
+        mapBasket.put(1, "объем оперативной памяти");
+        mapBasket.put(2, "объем накопителя");
+        mapBasket.put(3, "ОС");
+        mapBasket.put(4, "цвет");
+        mapBasket.put(5, "диагональ");
 
+        // Запрос характеристик
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите желаемые характеристики: \n 1. объем оперативной памяти:(в наличии: 4, 8, 16 ram) ");
         int ramUser = sc.nextInt();
-        System.out.println("объем накопителя:(в наличии: 128, 256, 512, 1024) ");
+        System.out.println("2. объем накопителя:(в наличии: 128, 256, 512, 1024) ");
         int storUser = sc.nextInt();
-        
-        System.out.println("диагональ: (в наличии: 13,3; 14,1; 15,6; 16,1)");
+        System.out.println("3. диагональ: (в наличии: 13,3; 14,1; 15,6; 16,1)");
         double digUser = sc.nextDouble();
-        
+
+        // Предложение из наличия
+        int n = 0;
         for(Laptop lap: unicLaptop) {
-            if ((lap.getRam() >= ramUser) & (lap.getStorageCap() >= storUser)  & lap.getDiagonal() >= digUser) {
+            if ((lap.getRam() >= ramUser) && (lap.getStorageCap() >= storUser)  && lap.getDiagonal() >= digUser) {
                 System.out.println("Предлагаем ноутбук с характеристиками не ниже заявленных: ");
                 System.out.println(lap.toString());
+            }else{
+                n = n+1;
+            }
+            if(n >= unicLaptop.size()){
+                System.out.println("Просим пересмотреть заданные характеристики, возможно они введены некорректно! \nНа сегодняшний момент в наличии ноутбуков с Вашими характеристиками нет. \nПривезем на заказ!)");
             }
         }
         sc.close();
